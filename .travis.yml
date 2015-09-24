@@ -30,6 +30,7 @@ install:
   - sed -ie "s/^plone.version.*/plone.version = $PLONE_VERSION/g" test_answers.ini
   - sed -ie "s/^package.type.*/package.type = $PACKAGE_TYPE/g" test_answers.ini
   - if [ "$PACKAGE_TYPE" == "Dexterity" ]; then echo "package.dexterity_type_name = MyDexterityTestType" >> test_answers.ini; fi
+  - cat test_answers.ini
   - bin/buildout -c travis.cfg
 
 before_script:
