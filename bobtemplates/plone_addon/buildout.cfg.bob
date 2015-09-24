@@ -9,6 +9,7 @@ parts =
     i18ndude
     omelette
     robot
+    print_buildout
 develop = .
 
 
@@ -60,6 +61,10 @@ eggs = zest.releaser
 recipe = zc.recipe.egg
 eggs = i18ndude
 
+[print_buildout]
+recipe = collective.recipe.cmd
+on_install=true
+cmds= cat buildout.cfg
 
 [versions]
 # Don't use a relased version of {{{ package.dottedname }}}
