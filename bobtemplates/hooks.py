@@ -182,7 +182,8 @@ def prepare_render(configurator):
 
     # package.uppercasename = 'COLLECTIVE_FOO_SOMETHING'
     # used for test-layers
-    configurator.variables['package.uppercasename'] = dottedname.replace('.', '_').upper()
+    configurator.variables['package.uppercasename'] = dottedname.replace(
+        '.', '_').upper()
 
     camelcasename = dottedname.replace('.', ' ').title()\
         .replace(' ', '')\
