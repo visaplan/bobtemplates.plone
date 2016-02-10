@@ -71,6 +71,8 @@ Changelog
 - Add "(uninstall)" to the uninstall profile title.
   Otherwise it cannot be distinguished from the install profile in portal_setup.
   [thet]
+- Allow to create toplevel-packages.
+  [pbauer]
 
 - Simplify concatenation of ``.rst`` files for ``setup.py``.
   [thet]
