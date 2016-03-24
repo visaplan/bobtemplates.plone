@@ -141,6 +141,11 @@ def pre_dexterity_type_name(configurator, question):
         raise SkipQuestion
 
 
+def pre_theme_type(configurator, question):
+    if configurator.variables['package.type'] != 'Theme':
+        raise SkipQuestion
+
+
 def prepare_render(configurator):
     """Some variables to make templating easier.
 
