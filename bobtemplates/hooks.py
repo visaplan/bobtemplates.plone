@@ -273,13 +273,31 @@ def cleanup_package(configurator):
 
     # find out what to delete
     to_delete = []
+    to_move = []
 
     if configurator.variables['package.type'] != u'Theme':
         to_delete.extend([
-            "{0}/theme",
+            "{0}/theme-barceloneta-based",
+            "{0}/theme-bootstrap",
             "{0}/profiles/default/theme.xml",
             "{0}/profiles/uninstall/theme.xml",
         ])
+
+    if configurator.variables['package.type'] == u'Theme':
+        if configurator.variables['package.theme_type'] == u'Barceloneta based Theme':
+            to_delete.extend([
+                "{0}/theme-bootstrap"
+            ])
+            to_move.extend([
+                ("{0}/theme-barceloneta-based", "{0}/theme")
+            ])
+        if configurator.variables['package.theme_type'] == u'Bootstrap Theme':
+            to_delete.extend([
+                "{0}/theme-barceloneta-based"
+            ])
+            to_move.extend([
+                ("{0}/theme-bootstrap", "{0}/theme")
+            ])
 
     if configurator.variables['package.type'] != u'Dexterity':
         to_delete.extend([
@@ -302,3 +320,10 @@ def cleanup_package(configurator):
                 shutil.rmtree(path)
             else:
                 os.remove(path)
+
+    # move parts
+    for source, dest in to_move:
+        source = source.format(base_path)
+        dest = dest.format(base_path)
+        if os.path.exists(source) and not os.path.exists(dest):
+            shutil.move(source, dest)
