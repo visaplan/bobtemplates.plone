@@ -59,5 +59,9 @@ setup(
     entry_points="""
     [z3c.autoinclude.plugin]
     target = plone
+{{% if package.type == 'Theme' %}}
+    [console_scripts]
+    plone-compile-resources = Products.CMFPlone._scripts.compile_resources:main
+{{% endif %}}
     """,
 )

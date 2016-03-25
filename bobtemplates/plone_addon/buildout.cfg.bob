@@ -4,6 +4,9 @@ extensions = mr.developer
 parts =
     instance
     test
+{{% if package.type == 'Theme' %}}
+    compile-resources
+{{% endif %}}
     code-analysis
     releaser
     i18ndude
@@ -21,6 +24,11 @@ eggs =
     Pillow
     {{{ package.dottedname }}} [test]
 
+{{% if package.type == 'Theme' %}}
+[compile-resources]
+recipe = zc.recipe.egg
+scripts = plone-compile-resources
+{{% endif %}}
 
 [code-analysis]
 recipe = plone.recipe.codeanalysis
