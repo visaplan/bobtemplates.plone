@@ -1,0 +1,19 @@
+{
+  "name": "{{{ package.dottedname }}}",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-cli": "latest",
+    "grunt-browser-sync": "^0.8.2",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-requirejs": "~0.4.3",
+    "grunt-contrib-watch": "latest",
+    "grunt-sed": "~0.1.1",
+    "grunt-check-dependencies": "latest",
+    "grunt-search": "latest",
+    "load-grunt-tasks": "latest",
+    "glob-all": "latest"
+  }
+}

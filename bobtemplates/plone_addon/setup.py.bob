@@ -40,10 +40,10 @@ setup(
     install_requires=[
         'plone.api',
         'setuptools',
-        'z3c.jbot',
 {{% if package.type == 'Theme' %}}
         'plone.app.theming',
         'plone.app.themingplugins',
+        'z3c.jbot',
 {{% endif %}}
 {{% if package.type == 'Dexterity' %}}
         'plone.app.dexterity',

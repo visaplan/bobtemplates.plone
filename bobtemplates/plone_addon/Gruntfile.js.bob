@@ -1,0 +1,56 @@
+module.exports = function (grunt) {
+    'use strict';
+    require('load-grunt-tasks')(grunt);
+    {{% if package.theme_type == 'Barceloneta' %}}
+    var fs = require('fs');
+    var glob = require('glob-all');
+
+    var CMFPlONE_PATH = '';
+    var CMFPlONE_PATH_REGEX = new RegExp(/'(.*[\\\/]Products\.CMFPlone.*)'/g);
+
+    var BARCELONETA_PATH = '';
+    var BARCELONETA_PATH_REGEX = new RegExp(/'(.*[\\\/]plonetheme\.barceloneta.*)'/g);
+
+    // Searching the "instance"-like script inside ./bin to find
+    // the location of both eggs, CMFPlone and plonetheme.barceloneta.
+    // We need them to tell the less compiler where to search for imports.
+    var file_names = glob.sync(['bin/*', '!bin/*.py']);
+
+    file_names.forEach(function(file_name) {
+      var data = fs.readFileSync(file_name).toString();
+      var matches = data.match(CMFPlONE_PATH_REGEX);
+      if(matches) {
+        matches.forEach(function(match) {
+          CMFPlONE_PATH = match.replace(/'/g, "");
+        });
+      }
+      matches = data.match(BARCELONETA_PATH_REGEX);
+      if(matches) {
+        matches.forEach(function(match) {
+          BARCELONETA_PATH  = match.replace(/'/g, "");
+        });
+      }
+    });
+
+    grunt.initConfig({
+      search: {
+        less_test: {
+          files: {
+            src: [CMFPlONE_PATH+'/**/*.less',
+                  BARCELONETA_PATH+'/**/*.less']
+          },
+          options: {
+            searchString: /portal/g,
+            logFile: 'found.json'
+          }
+        }
+      }
+    });
+
+    grunt.registerTask('default', ['search:less_test']);
+    {{% endif %}}
+    {{% if package.theme_type == 'Barceloneta' %}}
+    grunt.registerTask('default', []);
+    {{% endif %}}
+};
+

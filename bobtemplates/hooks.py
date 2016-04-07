@@ -281,19 +281,21 @@ def cleanup_package(configurator):
             "{0}/theme-bootstrap",
             "{0}/profiles/default/theme.xml",
             "{0}/profiles/uninstall/theme.xml",
+            "Gruntfile.js",
+            "package.json"
         ])
 
     if configurator.variables['package.type'] == u'Theme':
-        if configurator.variables['package.theme_type'] == u'Barceloneta based Theme':
+        if configurator.variables['package.theme_type'] == u'Barceloneta':
             to_delete.extend([
                 "{0}/theme-bootstrap"
             ])
             to_move.extend([
-                ("{0}/theme-barceloneta-based", "{0}/theme")
+                ("{0}/theme-barceloneta", "{0}/theme")
             ])
-        if configurator.variables['package.theme_type'] == u'Bootstrap Theme':
+        if configurator.variables['package.theme_type'] == u'Bootstrap':
             to_delete.extend([
-                "{0}/theme-barceloneta-based"
+                "{0}/theme-barceloneta"
             ])
             to_move.extend([
                 ("{0}/theme-bootstrap", "{0}/theme")
