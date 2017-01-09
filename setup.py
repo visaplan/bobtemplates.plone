@@ -8,8 +8,6 @@ version = '1.0.6.dev0'
 
 long_description = '\n\n'.join([
     open('README.rst').read(),
-    open('CONTRIBUTORS.rst').read(),
-    open('CHANGES.rst').read(),
 ])
 
 
