@@ -25,7 +25,7 @@ coverage.xml
 Vagrantfile
 .DS_Store
 
-# excludes / This Files should go into version control
+# excludes / These Files should go into version control
 !.editorconfig
 !.gitattributes
 !.gitignore
