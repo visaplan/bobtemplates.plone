@@ -6,6 +6,7 @@
 bin/
 tmp/
 build/
+.eggs/
 lib/
 lib64
 .tox/
